@@ -70,7 +70,7 @@ const MainHeader = styled.div`
   overflow-y: hidden;
   overflow-x: auto;
 
-  @media ${QUERIES.tablet} {
+  @media ${QUERIES.tabletAndSmaller} {
     align-items: center;
     justify-content: space-between;
   }
@@ -81,7 +81,7 @@ const Nav = styled.nav`
   gap: clamp(1rem, 6.8vw - 3rem, 3rem);
   margin: 0px 48px;
 
-  @media ${QUERIES.tablet} {
+  @media ${QUERIES.tabletAndSmaller} {
     display: none;
   }
 `;
@@ -89,7 +89,7 @@ const Nav = styled.nav`
 const Side = styled.div`
   flex: 1;
 
-  @media ${QUERIES.tablet} {
+  @media ${QUERIES.tabletAndSmaller} {
     flex: 0;
   }
 `;
@@ -109,12 +109,12 @@ const NavLink = styled.a`
 const IconWrapper = styled.div`
   display: none;
 
-  @media ${QUERIES.tablet} {
+  @media ${QUERIES.tabletAndSmaller} {
     display: flex;
     gap: 32px;
   }
 
-  @media ${QUERIES.phone} {
+  @media ${QUERIES.phoneAndSmaller} {
     gap: 16px;
   }
 `;

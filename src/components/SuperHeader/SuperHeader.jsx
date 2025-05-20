@@ -9,9 +9,7 @@ import Icon from "../Icon";
 const SuperHeader = () => {
   return (
     <Wrapper>
-      <MarketingMessage>
-        Free shipping on domestic orders over $75!
-      </MarketingMessage>
+      <MarketingMessage>Free shipping on domestic orders over $75!</MarketingMessage>
       <SearchInput />
       <HelpLink href="/help">Help</HelpLink>
       <UnstyledButton>
@@ -32,7 +30,7 @@ const Wrapper = styled.div`
   padding-left: 32px;
   padding-right: 32px;
 
-  @media ${QUERIES.tablet} {
+  @media ${QUERIES.tabletAndSmaller} {
     & * {
       display: none;
     }
