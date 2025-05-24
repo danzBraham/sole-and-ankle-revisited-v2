@@ -6,21 +6,12 @@ import SuperHeader from "../SuperHeader";
 import MobileMenu from "../MobileMenu";
 import Icon from "../Icon";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogOverlay,
-  DialogPortal,
-  DialogTrigger,
-} from "@radix-ui/react-dialog";
 import UnstyledButton from "../UnstyledButton";
 import VisuallyHidden from "../VisuallyHidden";
+import { useState } from "react";
 
 const Header = () => {
-  // For our mobile hamburger menu, we'll want to use a <button></button>
-  // with an onClick handler, something like this:
-  //
-  // <button onClick={() => setShowMobileMenu(true)}>
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   return (
     <header>
@@ -48,34 +39,15 @@ const Header = () => {
             <Icon id="search" />
             <VisuallyHidden>Search</VisuallyHidden>
           </UnstyledButton>
-          <UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
             <Icon id="menu" />
             <VisuallyHidden>Mobile menu</VisuallyHidden>
           </UnstyledButton>
         </MobileActions>
-
         <Filler />
-
-        {/* <Side> */}
-        {/* <IconWrapper>
-            <Icon id="shopping-bag" strokeWidth={2} />
-            <Icon id="search" strokeWidth={2} />
-            <Dialog>
-              <DialogTrigger asChild>
-                <UnstyledButton>
-                  <Icon id="menu" strokeWidth={2} />
-                </UnstyledButton>
-              </DialogTrigger>
-              <DialogPortal>
-                <StyledOverlay />
-                <DialogContent>
-                  <MobileMenu />
-                </DialogContent>
-              </DialogPortal>
-            </Dialog>
-          </IconWrapper> */}
-        {/* </Side> */}
       </MainHeader>
+
+      <MobileMenu isOpen={showMobileMenu} onDismiss={() => setShowMobileMenu(false)} />
     </header>
   );
 };
@@ -154,12 +126,6 @@ const NavLink = styled.a`
   &:first-of-type {
     color: var(--color-secondary);
   }
-`;
-
-const StyledOverlay = styled(DialogOverlay)`
-  background-color: hsla(220, 5%, 40%, 0.8);
-  position: fixed;
-  inset: 0;
 `;
 
 export default Header;
