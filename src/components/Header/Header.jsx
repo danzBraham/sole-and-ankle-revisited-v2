@@ -26,19 +26,38 @@ const Header = () => {
     <header>
       <SuperHeader />
       <MainHeader>
-        <Side>
+        <LogoWrapper>
           <Logo />
-        </Side>
-        <Nav>
+        </LogoWrapper>
+
+        <DesktopNav>
           <NavLink href="/sale">Sale</NavLink>
           <NavLink href="/new">New&nbsp;Releases</NavLink>
           <NavLink href="/men">Men</NavLink>
           <NavLink href="/women">Women</NavLink>
           <NavLink href="/kids">Kids</NavLink>
           <NavLink href="/collections">Collections</NavLink>
-        </Nav>
-        <Side>
-          <IconWrapper>
+        </DesktopNav>
+
+        <MobileActions>
+          <ShoppingBagButton>
+            <Icon id="shopping-bag" />
+            <VisuallyHidden>Shopping bag</VisuallyHidden>
+          </ShoppingBagButton>
+          <UnstyledButton>
+            <Icon id="search" />
+            <VisuallyHidden>Search</VisuallyHidden>
+          </UnstyledButton>
+          <UnstyledButton>
+            <Icon id="menu" />
+            <VisuallyHidden>Mobile menu</VisuallyHidden>
+          </UnstyledButton>
+        </MobileActions>
+
+        <Filler />
+
+        {/* <Side> */}
+        {/* <IconWrapper>
             <Icon id="shopping-bag" strokeWidth={2} />
             <Icon id="search" strokeWidth={2} />
             <Dialog>
@@ -54,8 +73,8 @@ const Header = () => {
                 </DialogContent>
               </DialogPortal>
             </Dialog>
-          </IconWrapper>
-        </Side>
+          </IconWrapper> */}
+        {/* </Side> */}
       </MainHeader>
     </header>
   );
@@ -71,12 +90,18 @@ const MainHeader = styled.div`
   overflow-x: auto;
 
   @media ${QUERIES.tabletAndSmaller} {
+    border-top: 4px solid var(--color-gray-900);
     align-items: center;
     justify-content: space-between;
   }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 `;
 
-const Nav = styled.nav`
+const DesktopNav = styled.nav`
   display: flex;
   gap: clamp(1rem, 6.8vw - 3rem, 3rem);
   margin: 0px 48px;
@@ -86,11 +111,36 @@ const Nav = styled.nav`
   }
 `;
 
-const Side = styled.div`
+const MobileActions = styled.div`
+  display: none;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: flex;
+    gap: 32px;
+  }
+
+  @media ${QUERIES.phoneAndSmaller} {
+    gap: 16px;
+  }
+`;
+
+const LogoWrapper = styled.div`
   flex: 1;
 
   @media ${QUERIES.tabletAndSmaller} {
-    flex: 0;
+    flex: revert;
+  }
+`;
+
+const ShoppingBagButton = styled(UnstyledButton)`
+  transform: translateX(-2px);
+`;
+
+const Filler = styled.div`
+  flex: 1;
+
+  @media ${QUERIES.tabletAndSmaller} {
+    display: none;
   }
 `;
 
@@ -103,19 +153,6 @@ const NavLink = styled.a`
 
   &:first-of-type {
     color: var(--color-secondary);
-  }
-`;
-
-const IconWrapper = styled.div`
-  display: none;
-
-  @media ${QUERIES.tabletAndSmaller} {
-    display: flex;
-    gap: 32px;
-  }
-
-  @media ${QUERIES.phoneAndSmaller} {
-    gap: 16px;
   }
 `;
 
